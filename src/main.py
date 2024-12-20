@@ -50,13 +50,13 @@ class WledPostModel(BaseModel):
 WLED_IP = getenv("WLED_IP","192.168.4.148")
 PAGE_TITLE = getenv("PAGE_TITLE", "WLED Matrix test")
 BS_THEME = getenv("BS_THEME", "dark")
-
+API_URL = getenv("API_URL", "127.0.0.1:8000")
 # Routes
 
 
 @app.get("/")
 async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "page_title": PAGE_TITLE, "bs_theme": BS_THEME})
+    return templates.TemplateResponse("index.html", {"request": request, "page_title": PAGE_TITLE, "bs_theme": BS_THEME, "api_url": API_URL})
 
 
 @app.get("/wled/status")
