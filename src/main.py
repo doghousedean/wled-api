@@ -1,8 +1,13 @@
+from os import getenv
 from typing import List
+
+import httpx
+from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel, conint, Field
-import httpx
+from pydantic import BaseModel, Field, conint
+
+load_dotenv()
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -42,14 +47,16 @@ class WledPostModel(BaseModel):
 # Temp config
 
 
-WLED_IP = "192.168.4.148"
+WLED_IP = getenv("WLED_IP","192.168.4.148")
+PAGE_TITLE = getenv("PAGE_TITLE", "WLED Matrix test")
+BS_THEME = getenv("BS_THEME", "dark")
 
 # Routes
 
 
 @app.get("/")
 async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("index.html", {"request": request, "page_title": PAGE_TITLE, "bs_theme": BS_THEME})
 
 
 @app.get("/wled/status")
