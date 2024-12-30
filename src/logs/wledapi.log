@@ -1,0 +1,14 @@
+on=True bri=64 colour=[WledColourModel(root=[255, 10, 0]), WledColourModel(root=[0, 0, 0])] text='Boobies (.)(.)' speed=128
+on=True bri=128 colour=[WledColourModel(root=[255, 255, 0]), WledColourModel(root=[0, 0, 0])] text='asdfasdfasfd' speed=255
+on=True bri=128 colour=[WledColourModel(root=[0, 0, 0]), WledColourModel(root=[0, 0, 0])] text='asdfasdfasfd' speed=255
+on=True bri=128 colour=[WledColourModel(root=[0, 255, 0]), WledColourModel(root=[0, 0, 0])] text='asdfasdfasfd' speed=255
+on=True bri=128 colour=[WledColourModel(root=[0, 255, 255]), WledColourModel(root=[0, 0, 0])] text='Tester' speed=255
+on=True bri=128 colour=[WledColourModel(root=[255, 0, 255]), WledColourModel(root=[0, 0, 0])] text='Tester' speed=255
+on=True bri=128 colour=[WledColourModel(root=[255, 255, 255]), WledColourModel(root=[0, 0, 0])] text='Tester' speed=255
+on=True bri=128 colour=[WledColourModel(root=[255, 255, 0]), WledColourModel(root=[0, 0, 0])] text='Tester' speed=255
+on=True bri=128 colour=[WledColourModel(root=[0, 255, 0]), WledColourModel(root=[0, 0, 0])] text='green text' speed=255
+on=True bri=128 colour=[WledColourModel(root=[255, 255, 255]), WledColourModel(root=[0, 0, 0])] text='green text' speed=255
+on=True bri=128 colour=[WledColourModel(root=[0, 255, 255]), WledColourModel(root=[0, 0, 0])] text='green text' speed=255
+on=True bri=128 colour=[WledColourModel(root=[255, 255, 0]), WledColourModel(root=[0, 0, 0])] text='green text' speed=255
+on=True bri=128 colour=[WledColourModel(root=[255, 0, 255]), WledColourModel(root=[0, 0, 0])] text='Happy New Year' speed=255
+on=True bri=128 colour=[WledColourModel(root=[0, 255, 255]), WledColourModel(root=[0, 0, 0])] text='Happy New Year' speed=255
