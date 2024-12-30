@@ -10,18 +10,32 @@
 <body>
     <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
         <h1 class="mb-4 text-center">{{page_title}}</h1>
+        <div class="d-flex gap-3 mb-4">
+            <button id="btn-on" class="btn btn-success btn-lg">Turn On</button>
+            <button id="btn-off" class="btn btn-danger btn-lg">Turn Off</button>
+        </div>
         <div class="mb-4 w-50">
             <input id="text-input" type="text" class="form-control form-control-lg text-center" placeholder="Enter text to display">
         </div>
         <div class="mb-4">
             <p>Choose a colour</p>
-            <button class="btn btn-danger" onclick="setToColour('#ff0000')">Red</button>
-            <button class="btn btn-success" onclick="setToColour('#00ff00')">Green</button>
+            <button class="btn btn-primary" onclick="setToColour('#ff0000')">Red</button>
+            <button class="btn btn-primary" onclick="setToColour('#00ff00')">Green</button>
             <button class="btn btn-primary" onclick="setToColour('#0000ff')">Blue</button>
         </div>
         <div class="mb-4">
             <label for="color-picker" class="form-label text-center">Select a Custom Color:</label>
             <input id="color-picker" type="color" class="form-control form-control-color" value="#ffffff" title="Choose your color">
+        </div>
+        <div class="row">
+            <div class="col mb-4">
+                <input id="speed-slider" type="range" class="form-range" min="0" max="255" value="128">
+                <p id="speed-value" class="text-center mt-2">Speed: 128</p>
+            </div>
+            <div class="col mb-4">
+                <input id="brightness-slider" type="range" class="form-range" min="0" max="255" value="128">
+                <p id="brightness-value" class="text-center mt-2">Brightness: 128</p>
+            </div>
         </div>
         <button id="btn-update" class="btn btn-primary btn-lg">Update Text</button>
     </div>

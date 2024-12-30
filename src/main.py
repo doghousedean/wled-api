@@ -73,6 +73,15 @@ async def read_root(request: Request):
             return templates.TemplateResponse("index.html", {"request": request, "page_title": PAGE_TITLE, "bs_theme": BS_THEME, "api_url": API_URL})
         case _:
             return {"message": "Try requesting the page with a browser"}
+        
+@app.get("/admin")
+async def admin_root(request: Request):
+    accept = HeaderStr(request.headers.get('accept', ''))
+    match accept:
+        case 'text/html':
+            return templates.TemplateResponse("admin.html", {"request": request, "page_title": PAGE_TITLE, "bs_theme": BS_THEME, "api_url": API_URL})
+        case _:
+            return {"message": "Try requesting the page with a browser"}
 
 
 @app.get("/wled/status")
