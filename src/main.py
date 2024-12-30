@@ -100,7 +100,8 @@ async def post_matrix_text(request: Request, data: WledPostModel):
     """
     Post text to WLED matrix
     """
-
+    with open('logs/wledapi.log', 'a') as f:
+        f.write(f"{data}\n")
 
     url = f"http://{WLED_IP}/json"
     # print(data.to_wled_payload())
