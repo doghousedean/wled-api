@@ -12,6 +12,17 @@ load_dotenv()
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
+class HeaderStr(str):
+    """__HeaderStr class__
+        This is to allow a contains comparison for the match statments
+    Args:
+        str (_type_): a regular sting
+
+    example:
+        print(HeaderStr(''text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7') == 'text/html')
+        True
+    """
+    __eq__ = str.__contains__
 
 # Models for post
 
@@ -56,7 +67,12 @@ API_URL = getenv("API_URL", "127.0.0.1:8000")
 
 @app.get("/")
 async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request, "page_title": PAGE_TITLE, "bs_theme": BS_THEME, "api_url": API_URL})
+    accept = HeaderStr(request.headers.get('accept', ''))
+    match accept:
+        case 'text/html':
+            return templates.TemplateResponse("index.html", {"request": request, "page_title": PAGE_TITLE, "bs_theme": BS_THEME, "api_url": API_URL})
+        case _:
+            return {"message": "Try requesting the page with a browser"}
 
 
 @app.get("/wled/status")
@@ -65,12 +81,17 @@ async def read_status(request: Request):
     """
     Get WLED status
     """
-    url = f"http://{WLED_IP}/json"
-    async with httpx.AsyncClient() as client:
-        response = await client.get(url)
-        wled_data = response.json()
-        response.raise_for_status()
-    return wled_data
+    accept = HeaderStr(request.headers.get('accept', ''))
+    match accept:
+        case 'application/json':
+            url = f"http://{WLED_IP}/json"
+            async with httpx.AsyncClient() as client:
+                response = await client.get(url)
+                wled_data = response.json()
+                response.raise_for_status()
+            return wled_data
+        case _:
+            return "Try application/json"
 
 
 @app.post("/wled/matrix/text")

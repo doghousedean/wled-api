@@ -18,7 +18,13 @@
             <input id="text-input" type="text" class="form-control form-control-lg text-center" placeholder="Enter text to display">
         </div>
         <div class="mb-4">
-            <label for="color-picker" class="form-label text-center">Select Primary Color:</label>
+            <p>Choose a colour</p>
+            <button class="btn btn-primary" onclick="setToColour('#ff0000')">Red</button>
+            <button class="btn btn-primary" onclick="setToColour('#00ff00')">Green</button>
+            <button class="btn btn-primary" onclick="setToColour('#0000ff')">Blue</button>
+        </div>
+        <div class="mb-4">
+            <label for="color-picker" class="form-label text-center">Select a Custom Color:</label>
             <input id="color-picker" type="color" class="form-control form-control-color" value="#ffffff" title="Choose your color">
         </div>
         <div class="row">
@@ -47,6 +53,11 @@
             const g = (bigint >> 8) & 255;
             const b = bigint & 255;
             return [r, g, b];
+        }
+
+        function setToColour(hex) {
+            const colour_picker = document.getElementById("color-picker");
+            colour_picker.value = hex;
         }
 
         // Update displayed speed value when slider is moved
